@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background-color:lightgrey;
+  height: 100vh;
 }
 
 .App-logo {
@@ -35,4 +37,23 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+ .parent{
+  width:100%;
+
+ }
+
+.head{
+  width:12%;
+}
+
+.cntent{
+  width:88%;
+  background-color: lightgrey;
+}
+
+.small-head{
+  text-align: left;
+  font-weight: 600;
 }
