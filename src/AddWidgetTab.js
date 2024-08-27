@@ -9,7 +9,7 @@ import Stack from '@mui/material/Stack';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from "./Theme.js";
 import { Button } from '@mui/material';
-
+import { styled } from '@mui/material';
 
 
 export default function AddWidgetTab() {
@@ -22,7 +22,7 @@ export default function AddWidgetTab() {
     return (
         <ThemeProvider theme={theme}>
             <Box sx={{ width: '100%', typography: 'body1', backgroundColor: theme.palette.background.default }}>
-                <TabContext value={value}>
+                <TabContext value={value} sx={{width:'100%',backgroundColor:theme.palette.background.default}}>
                     <Box sx={{ borderBottom: 1 }}>
                         <TabList onChange={handleChange}>
                             <Tab label="CSPM" value="1" />
@@ -32,8 +32,9 @@ export default function AddWidgetTab() {
 
                         </TabList>
                     </Box>
-                    <TabPanel value="1">
-                        <Stack spacing={2}>
+                    <div style={{height: '72vh'}}>
+                    <TabPanel value="1" sx={{ backgroundColor:theme.palette.background.default}}>
+                        <Stack spacing={2} sx={{backgroundColor:theme.palette.background.default}}>
                             <Card sx={{ borderColor: theme.palette.secondary.default }} className='paddingminor panel'>
                                 Widget1
                             </Card>
@@ -68,10 +69,29 @@ export default function AddWidgetTab() {
                             Widget2
                         </Card>
                     </Stack></TabPanel>
+                    </div>
+                    {/* </div> */}
                 </TabContext>
-                <Button>confirm</Button>
-                <Button>cancel</Button>
+                <div style={{textAlign:'right'}}>
+                {/* <Button sx={{borderColor:'blue','&:hover': {
+            borderColor: 'darkred', // Optional: change border color on hover
+          }, backgroundColor:'white', }} variant="contained">confirm</Button> */}
+          <CustomButton variant="outlined" sx={{borderRadius:2}}>Confirm</CustomButton>
+          <Button variant='contained' sx={{borderRadius:2,backgroundColor:theme.palette.background.secondary, '&:hover': {backgroundColor:theme.palette.background.default, color:theme.palette.primary.main, borderColor:theme.palette.background.secondary}}}>cancel</Button>
+                </div>
             </Box>
         </ThemeProvider>
     );
 }
+
+const CustomButton = styled(Button)({
+    borderColor: theme.palette.background.secondary, // Set the border color
+    '&:hover': {
+      borderColor: theme.palette.background.secondary,
+      backgroundColor:theme.palette.background.secondary,
+      color:'white'// Change border color on hover
+    },
+    backgroundColor: 'white', // Set background color
+    borderStyle: 'solid', // Ensure border style is solid
+    marginRight:'3%',
+  });
