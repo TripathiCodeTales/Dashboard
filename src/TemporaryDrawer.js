@@ -14,9 +14,13 @@ import WidgetDrawer from './WidgetDrawer';
 
 export default function TemporaryDrawer({isTrue,onClose}) {
 
+
+const handleOnClose = () => {
+  onClose()
+}
   const DrawerList = (
     <Box sx={{ width: 550 }} role="presentation">
-      <WidgetDrawer />
+      <WidgetDrawer onClose={handleOnClose}/>
     </Box>
   );
 

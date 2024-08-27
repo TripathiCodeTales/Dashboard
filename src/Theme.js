@@ -12,7 +12,7 @@ const theme = createTheme({
       },
       background: {
         default: '#ffffff',
-        secondary:' #000080', //blue
+        secondary:'#000080', //blue
         paper: ' #e6f9ff',// Custom background color
       },
       text: {

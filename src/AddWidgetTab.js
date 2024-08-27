@@ -12,13 +12,15 @@ import { Button } from '@mui/material';
 import { styled } from '@mui/material';
 
 
-export default function AddWidgetTab() {
+export default function AddWidgetTab({onClose}) {
     const [value, setValue] = React.useState('1');
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-
+const handleOnClick = () => {
+onClose()
+}
     return (
         <ThemeProvider theme={theme}>
             <Box sx={{ width: '100%', typography: 'body1', backgroundColor: theme.palette.background.default }}>
@@ -77,7 +79,7 @@ export default function AddWidgetTab() {
             borderColor: 'darkred', // Optional: change border color on hover
           }, backgroundColor:'white', }} variant="contained">confirm</Button> */}
           <CustomButton variant="outlined" sx={{borderRadius:2}}>Confirm</CustomButton>
-          <Button variant='contained' sx={{borderRadius:2,backgroundColor:theme.palette.background.secondary, '&:hover': {backgroundColor:theme.palette.background.default, color:theme.palette.primary.main, borderColor:theme.palette.background.secondary}}}>cancel</Button>
+          <Button onClick={handleOnClick} variant='contained' sx={{borderRadius:2,backgroundColor:theme.palette.background.secondary, '&:hover': {backgroundColor:theme.palette.background.default, color:theme.palette.primary.main, borderColor:theme.palette.background.secondary,borderStyle: 'solid',transition: 'border-color 0.3s ease'}}}>cancel</Button>
                 </div>
             </Box>
         </ThemeProvider>

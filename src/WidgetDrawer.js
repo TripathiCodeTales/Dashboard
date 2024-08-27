@@ -10,8 +10,12 @@ import { ThemeProvider } from '@mui/material/styles';
 import theme from "./Theme.js";
 import AddWidgetTab from "./AddWidgetTab.js";
 
-export default function WidgetDrawer() {
+export default function WidgetDrawer({onClose}) {
 
+
+const handleOnClick =() => {
+ onClose()
+}
 
     return (
         <ThemeProvider theme={theme}>
@@ -29,7 +33,7 @@ export default function WidgetDrawer() {
                                 aria-controls="menu-appbar"
                                 aria-haspopup="true"
 
-                                color="inherit"
+                                color="inherit" onClick={handleOnClick}
                             >
                                 <ClearIcon />
                             </IconButton>
@@ -39,7 +43,7 @@ export default function WidgetDrawer() {
 
                 </AppBar>
                 <p className="paddingminor">Personalise the dashboard by adding the following widget</p>
-                <AddWidgetTab />
+                <AddWidgetTab onClose = {handleOnClick}/>
 
             </Box>
         </ThemeProvider>
