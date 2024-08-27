@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { Button, ThemeProvider } from "@mui/material";
 import Card from '@mui/material/Card';
 import theme from "./Theme";
@@ -6,22 +6,29 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import AddIcon from '@mui/icons-material/Add';
+import TemporaryDrawer from "./TemporaryDrawer"; // Adjust the import path as necessary
 
 
 
 const AddWidget = () => {
+  const [drawer, setDrawer] = useState(false);
 
+  const handleOnClick = () => {
+    setDrawer(true);
+  };
+
+  const handleCloseDrawer = () => {
+    setDrawer(false);
+  };
   return (
 
     <Card sx={{
       backgroundColor: theme.palette.background.default,
       m: 1,
       borderRadius: 3,
-      flex: 1, // Ensures it takes up equal space
+      flex: 1,
       width: "100%",
-      // width: '120', // Make sure it takes full width of its container
-      // maxWidth: '100%', // Set a max width for larger screens
-      height: 200,
+      height: 210,
     }}>
       <Box sx={{
         borderRadius: 3,
@@ -35,11 +42,12 @@ const AddWidget = () => {
       }}>
         <CardContent>
           <Typography varient="h6">
-            <Button variant="outlined" startIcon={<AddIcon />} sx={{ backgroundColor: theme.palette.background.default }}>Add widget</Button>
+            <Button variant="outlined" startIcon={<AddIcon />} sx={{ backgroundColor: theme.palette.background.default }} onClick={handleOnClick}>Add widget</Button>
 
           </Typography>
         </CardContent>
       </Box>
+      <TemporaryDrawer isTrue={drawer} onClose={handleCloseDrawer} />
     </Card>
 
   )

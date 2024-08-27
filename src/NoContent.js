@@ -17,8 +17,10 @@ const NoContent = ({noContent}) => {
         <Box sx={{ 
         borderRadius: 3, 
         
-        height: '100%', 
-        display:'flex',
+        
+          width:350,
+                  height:120,
+               display:'flex',
         alignItems:'center',
         justifyContent:'center', // Ensures height fills the Card
       }}> 

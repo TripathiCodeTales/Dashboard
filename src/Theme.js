@@ -7,11 +7,13 @@ const theme = createTheme({
         main:  '#000000', // Custom primary color
       },
       secondary: {
-        main: '#949494', // Custom secondary color grey
+        main: '#949494', 
+        default:'#808080'// Custom secondary color grey
       },
       background: {
         default: '#ffffff',
-        paper: 'rgb(211, 211, 211)',// Custom background color
+        secondary:' #000080', //blue
+        paper: ' #e6f9ff',// Custom background color
       },
       text: {
         primary: '#333333', // Custom text color

@@ -12,8 +12,8 @@ import Box from '@mui/material/Box';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from "./Theme.js";
 import AddWidget from "./AddWidget.js";
-
-
+import RiskAssessmentBar from "./RiskAssessmentBar.js";
+import DrawerComp from "./TemporaryDrawer.js";
 
 const Content = () => {
     const [days, setDays] = useState("");
@@ -30,84 +30,126 @@ const Content = () => {
             { id: 3, value: 1689, label: 'failed' },
         ]
     }
-   console.log(detail.data2)
+    console.log(detail.data2)
     const handleChange = (e) => {
         setDays(e.target.value)
     }
     return (
-            <ThemeProvider theme = {theme}>
-           
-            <Box sx={{ padding: 2}} display="flex"
-          justifyContent="space-between">
+        
+        <ThemeProvider theme={theme}>
+           <Box sx={{backgroundColor: theme.palette.background.paper}}>
+            <Box sx={{ paddingTop: 5 }} display="flex" justifyContent={"space-between"}>
 
-            <div>
-                <p className="small-head" >CNAPP dashboard</p> 
+                <div className="small-head">
+                      CNAPP dashboard
                 </div>
-                <div>
-                
-                <Button variant="outlined" endIcon={<AddIcon />} sx={{backgroundColor: theme.palette.background.default}}>Add widget</Button>
-                <Button variant="outlined" sx={{backgroundColor: theme.palette.background.default}}><AutorenewIcon /></Button>
-                <Button variant="outlined"sx={{backgroundColor: theme.palette.background.default}}><MoreVertIcon /></Button>
-                
-                    <SvgIcon sx={{backgroundColor: theme.palette.background.default}}><AccessTimeFilledOutlinedIcon /></SvgIcon>
-                    <Select labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        defaultValue={2} variant="outlined" 
-                        sx={{backgroundColor: theme.palette.background.default}}
-                        onChange={handleChange}>
-                        <MenuItem value={2}>Last 2 days</MenuItem>
-                        <MenuItem value={7}>last 7 days</MenuItem>
-                        <MenuItem value={15}>last 15 days</MenuItem>
-                    </Select>
-                   
-                
-</div>
+                <div className="sideHeader">
+                    <div className="sideHeader-item">
+                        <Button variant="outlined" endIcon={<AddIcon />} sx={{ backgroundColor: theme.palette.background.default }}>Add widget</Button>
+                    </div>
+                    <div className="sideHeader-item">
+                        <Button variant="outlined" sx={{ backgroundColor: theme.palette.background.default }}><AutorenewIcon /></Button>
+                    </div>
+                    <div className="sideHeader-item">
+                        <Button variant="outlined" sx={{ backgroundColor: theme.palette.background.default }}><MoreVertIcon /></Button>
+                    </div>
+                    <div className="sideHeader-item">
+                        <SvgIcon sx={{ backgroundColor: theme.palette.background.default }}><AccessTimeFilledOutlinedIcon /></SvgIcon>
+                    </div>
+                    <div className="sideHeader-item">
+                        <Select labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            defaultValue={2} variant="outlined"
+                            sx={{ backgroundColor: theme.palette.background.default }}
+                            onChange={handleChange}>
+                            <MenuItem value={2}>Last 2 days</MenuItem>
+                            <MenuItem value={7}>last 7 days</MenuItem>
+                            <MenuItem value={15}>last 15 days</MenuItem>
+                        </Select>
+                    </div>
+
+
+
+                </div>
+            </Box>
+
+            <p className='small-head-crd'>CSPM Executive Dashboard</p>
+            <Box
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'row', width: '100%',
+                    gap: 1.5, marginLeft: 3.5
+
+                }}>
+                <Box sx={{
+                    width: '32%'
+                }}>
+                    <CardComponent data={detail.data} Header="Cloud Accounts" />
                 </Box>
-                
-               <p className='small-head'>CSPM Executive Dashboard</p>
-                <Box
-             sx={{
-                display: 'flex',
-                flexDirection: 'row' ,flexWrap:'nowrap',gap:2, flex:1, width:'100%'}}>
-                   <Box sx={{
-                display: 'flex',
-                flexDirection: 'column' ,flexWrap:'wrap',gap:2, width:'33%'}}>
-            <CardComponent data={detail.data} Header="Cloud Accounts"/>
-            </Box>
-            <Box sx={{
-                display: 'flex',
-                flexDirection: 'column' ,flexWrap:'wrap',gap:2, width:'33%'}}>
-            <CardComponent data={detail.data2} Header="Cloud Account Risk Assessment"/>
-            </Box>
-            <Box sx={{
-                display: 'flex',
-                flexDirection: 'column' ,flexWrap:'wrap', width:'33%', gap:2}}>
-            <AddWidget />
-            </Box>
+                <Box sx={{
+                    width: '32%'
+                }}>
+                    <CardComponent data={detail.data2} Header="Cloud Account Risk Assessment" />
+                </Box>
+                <Box sx={{
+                    width: '32%', height: '100px'
+                }}>
+                    <AddWidget />
+                </Box>
             </Box>
             <br />
             <br />
 
             <p className='small-head'>CWPP Dashboard:</p>
-          <Box  sx={{
-                display: 'flex',
-                flexDirection: 'row' ,flexWrap:'wrap', width:'100%'}}>
             <Box sx={{
                 display: 'flex',
-                flexDirection: 'column' ,flexWrap:'wrap',gap:2 ,width:'33.33%'}}>
-            <CardComponent Header="Top 5 Namespace Specific Alerts" noContent="No Graph Data Available"/>
-           </Box>
-            <Box sx={{
-                display: 'flex',
-                flexDirection: 'column' ,flexWrap:'wrap',gap:2 ,width:'33.33%'}}>
-            <CardComponent Header="Workload Headers" noContent="No Graph Data Available"/>
+                flexDirection: 'row', width: '100%',
+                gap: 1.5, marginLeft: 3.5,
+                flexWrap: 'wrap'
+            }}>
+                <Box sx={{
+                    flexDirection: 'column', flexWrap: 'wrap', gap: 2, width: '32%'
+                }}>
+                    <CardComponent Header="Top 5 Namespace Specific Alerts" noContent="No Graph Data Available" />
+                </Box>
+                <Box sx={{
+                    flexDirection: 'column', flexWrap: 'wrap', gap: 2, width: '32%'
+                }}>
+                    <CardComponent Header="Workload Headers" noContent="No Graph Data Available" />
+                </Box>
+                <Box sx={{
+                    flexDirection: 'column', flexWrap: 'wrap', gap: 2, width: '32%', height: '100px'
+                }}>
+                    <AddWidget />
+                </Box>
             </Box>
-            <Box sx={{
-                display: 'flex',
-                flexDirection: 'column' ,flexWrap:'wrap',gap:2 ,width:'33.33%'}}>
-            <AddWidget />
+            <p className='small-head-crd'>Registry Scan</p>
+            <Box
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'row', width: '100%',
+                    gap: 1.5, marginLeft: 3.5
+
+                }}>
+                <Box sx={{
+                    width: '32%'
+                }}>
+                    <CardComponent data={detail.data} Header="Image Risk Assessment" />
+                </Box>
+                <Box sx={{
+                    width: '32%'
+                }}>
+                    <CardComponent data={detail.data2} Header="Image Security Issue" />
+                </Box>
+                <Box sx={{
+                    width: '32%', height: '100px'
+                }}>
+                    <AddWidget />
+                    {/* <RiskAssessmentBar /> */}
+                    <DrawerComp />
+                </Box>
             </Box>
-        </Box>
+            </Box>
         </ThemeProvider>
     )
 }

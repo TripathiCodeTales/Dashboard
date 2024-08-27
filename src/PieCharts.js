@@ -19,7 +19,9 @@ const PieCharts = ({ data }) => {
             data: data,
             innerRadius: 48,
           },
-        ]} {...size}>
+        ]} 
+        {...size}
+        >
         
       
       <PieCenterLabel>
