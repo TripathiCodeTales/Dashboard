@@ -10,7 +10,7 @@ const size ={
           height:150
 }
 const PieCharts = ({ data }) => {
-  console.log(data)
+ 
   return (
     
       <PieChart

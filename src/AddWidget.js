@@ -10,7 +10,7 @@ import TemporaryDrawer from "./TemporaryDrawer"; // Adjust the import path as ne
 
 
 
-const AddWidget = () => {
+const AddWidget = ({detail,handleOnChange}) => {
   const [drawer, setDrawer] = useState(false);
 
   const handleOnClick = () => {
@@ -47,7 +47,7 @@ const AddWidget = () => {
           </Typography>
         </CardContent>
       </Box>
-      <TemporaryDrawer isTrue={drawer} onClose={handleCloseDrawer} />
+      <TemporaryDrawer isTrue={drawer} onClose={handleCloseDrawer} handleOnChange={handleOnChange} detail={detail}/>
     </Card>
 
   )

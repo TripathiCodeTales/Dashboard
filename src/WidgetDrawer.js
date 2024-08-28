@@ -10,7 +10,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import theme from "./Theme.js";
 import AddWidgetTab from "./AddWidgetTab.js";
 
-export default function WidgetDrawer({onClose}) {
+export default function WidgetDrawer({onClose,handleOnChange,detail}) {
 
 
 const handleOnClick =() => {
@@ -43,7 +43,7 @@ const handleOnClick =() => {
 
                 </AppBar>
                 <p className="paddingminor">Personalise the dashboard by adding the following widget</p>
-                <AddWidgetTab onClose = {handleOnClick}/>
+                <AddWidgetTab onClose = {handleOnClick} handleOnChange={handleOnChange} detail={detail}/>
 
             </Box>
         </ThemeProvider>

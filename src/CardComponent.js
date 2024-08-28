@@ -8,12 +8,9 @@ import theme from "./Theme.js";
 import NoContent from "./NoContent.js";
 
 const CardComponent = ({data,Header,noContent}) => {
-    // const detail = {
-    // data:[
-    //     { id: 0, value: 50, label: 'connected' },
-    //     { id: 1, value: 50, label: 'not connected' },
-    //   ],
-    // }
+    // console.log(data);
+   let finalData= data?.filter((dat)=> dat.isChecked == 'true')
+    // console.log(finalData)
     return(
             <Card variant="outlined" sx={{ backgroundColor: theme.palette.background.default, m:1, borderRadius:3, flex:1, minWidth:0,  
     //    minWidth:"255px"
@@ -22,8 +19,8 @@ const CardComponent = ({data,Header,noContent}) => {
                 {Header}
             <Typography variant="h6" component="div">
             {data ? 
-            <PieCharts data = {data}/> : <NoContent noContent={noContent}/>}
-          
+            <PieCharts data = {finalData}/> : <NoContent noContent={noContent}/>}
+             
           
           
         </Typography>

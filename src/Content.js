@@ -15,25 +15,37 @@ import AddWidget from "./AddWidget.js";
 import RiskAssessmentBar from "./RiskAssessmentBar.js";
 import DrawerComp from "./TemporaryDrawer.js";
 
-const Content = () => {
+const Content = ({handleOnChange,detail}) => {
     const [days, setDays] = useState("");
-
-    const detail = {
-        data: [
-            { id: 0, value: 50, label: 'connected' },
-            { id: 1, value: 50, label: 'not connected' },
-        ],
-        data2: [
-            { id: 0, value: 1689, label: 'passed' },
-            { id: 1, value: 36, label: 'Not available' },
-            { id: 2, value: 68, label: 'warning' },
-            { id: 3, value: 1689, label: 'failed' },
-        ]
-    }
-    console.log(detail.data2)
+    
+    // const detail = {
+    //     data: [
+    //         { id: 0, value: 50, label: 'connected' , isChecked: 'true'},
+    //         { id: 1, value: 50, label: 'not connected', isChecked: 'true'},
+    //         // {id:2, value:10, label:'unconnected', isChecked:'false'},
+    //         // {id:3, value:40, label: 'somewhat connected', isChecked:'false'}
+    //     ],
+        
+    //     data2: [
+    //         { id: 0, value: 1689, label: 'passed',isChecked:'true' },
+    //         { id: 1, value: 36, label: 'Not available',isChecked:'true' },
+    //         { id: 2, value: 68, label: 'warning',isChecked:'true' },
+    //         { id: 3, value: 1689, label: 'failed',isChecked:'true' },
+    //         // {id:4, value:100, label:'maybe passed', isChecked:'false'},
+    //         // {id:5, value:400, label: 'unconnected', isChecked:'false'}
+    //     ], 
+    //     data3:[
+    //         {id:0, value:10, label:'unconnected'},
+    //         {id:1, value:40, label: 'somewhat connected'},
+    //         {id:2, value:50, label:'connects'}
+    //     ]
+    // }
+    console.log(detail);
     const handleChange = (e) => {
         setDays(e.target.value)
     }
+
+
     return (
         
         <ThemeProvider theme={theme}>
@@ -84,17 +96,25 @@ const Content = () => {
                 <Box sx={{
                     width: '32%'
                 }}>
-                    <CardComponent data={detail.data} Header="Cloud Accounts" />
+                    <CardComponent data={detail.CSPM.widget1}
+                     Header="Cloud Accounts"  />
+                     
+                    
                 </Box>
                 <Box sx={{
                     width: '32%'
                 }}>
-                    <CardComponent data={detail.data2} Header="Cloud Account Risk Assessment" />
+                    <CardComponent data={detail.CSPM.widget2} Header="Cloud Account Risk Assessment" />
                 </Box>
+                {/* <Box sx={{
+                    width: '32%'
+                }}>
+                    <CardComponent data={detail.data3} Header="Cloud Account Risk Assessment" />
+                </Box> */}
                 <Box sx={{
                     width: '32%', height: '100px'
                 }}>
-                    <AddWidget />
+                    <AddWidget detail={detail} handleOnChange={handleOnChange}/>
                 </Box>
             </Box>
             <br />
@@ -120,7 +140,7 @@ const Content = () => {
                 <Box sx={{
                     flexDirection: 'column', flexWrap: 'wrap', gap: 2, width: '32%', height: '100px'
                 }}>
-                    <AddWidget />
+                    <AddWidget detail/>
                 </Box>
             </Box>
             <p className='small-head-crd'>Registry Scan</p>

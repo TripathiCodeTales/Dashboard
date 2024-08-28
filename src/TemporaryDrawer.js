@@ -12,7 +12,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import WidgetDrawer from './WidgetDrawer';
 
-export default function TemporaryDrawer({isTrue,onClose}) {
+export default function TemporaryDrawer({isTrue,onClose,handleOnChange,detail}) {
 
 
 const handleOnClose = () => {
@@ -20,7 +20,7 @@ const handleOnClose = () => {
 }
   const DrawerList = (
     <Box sx={{ width: 550 }} role="presentation">
-      <WidgetDrawer onClose={handleOnClose}/>
+      <WidgetDrawer onClose={handleOnClose} handleOnChange={handleOnChange} detail={detail}/>
     </Box>
   );
 
