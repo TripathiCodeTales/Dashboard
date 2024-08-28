@@ -11,6 +11,7 @@ import TemporaryDrawer from "./TemporaryDrawer"; // Adjust the import path as ne
 
 
 const AddWidget = ({detail,handleOnChange}) => {
+  debugger;
   const [drawer, setDrawer] = useState(false);
 
   const handleOnClick = () => {

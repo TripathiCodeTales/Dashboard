@@ -16,8 +16,8 @@ import RiskAssessmentBar from "./RiskAssessmentBar.js";
 import DrawerComp from "./TemporaryDrawer.js";
 
 const Content = ({handleOnChange,detail}) => {
+    console.log(detail);
     const [days, setDays] = useState("");
-    
     // const detail = {
     //     data: [
     //         { id: 0, value: 50, label: 'connected' , isChecked: 'true'},
@@ -40,11 +40,11 @@ const Content = ({handleOnChange,detail}) => {
     //         {id:2, value:50, label:'connects'}
     //     ]
     // }
-    console.log(detail);
+    console.log('heck'+JSON.stringify(detail));
     const handleChange = (e) => {
+        
         setDays(e.target.value)
     }
-
 
     return (
         
@@ -106,15 +106,15 @@ const Content = ({handleOnChange,detail}) => {
                 }}>
                     <CardComponent data={detail.CSPM.widget2} Header="Cloud Account Risk Assessment" />
                 </Box>
-                {/* <Box sx={{
+                <Box sx={{
                     width: '32%'
                 }}>
-                    <CardComponent data={detail.data3} Header="Cloud Account Risk Assessment" />
-                </Box> */}
+                    <CardComponent data={detail.CSPM.widget3} Header="Cloud Account Risk Assessment" />
+                </Box>
                 <Box sx={{
                     width: '32%', height: '100px'
                 }}>
-                    <AddWidget detail={detail} handleOnChange={handleOnChange}/>
+                    <AddWidget detail={detail.CSPM} handleOnChange={handleOnChange}/>
                 </Box>
             </Box>
             <br />
@@ -140,7 +140,7 @@ const Content = ({handleOnChange,detail}) => {
                 <Box sx={{
                     flexDirection: 'column', flexWrap: 'wrap', gap: 2, width: '32%', height: '100px'
                 }}>
-                    <AddWidget detail/>
+                    <AddWidget detail={detail.CSPM}/>
                 </Box>
             </Box>
             <p className='small-head-crd'>Registry Scan</p>

@@ -31,16 +31,17 @@ function App() {
   const[list,setList] =useState(details)
 
 const handleOnChange= (event,item) => {
-  const updatedList = details.map((detail)=>{
-    if(task.title === item.title){
+  debugger;
+  const updatedList = Object.entries(details.CSPM).map(([detailKey, detailValue])=>{
+    if(detailKey === item){
       if(event.target.checked=== true){
-        task.isChecked='true'
+        detailValue.isChecked='true'
       }else {
-        task.isChecked = 'false'
+        detailValue.isChecked = 'false'
       }
-      return task
+      return detailValue
     } else{
-      return task
+      return detailValue
     }
   })
   setList(updatedList)

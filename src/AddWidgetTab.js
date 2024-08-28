@@ -15,13 +15,10 @@ import { useState } from 'react';
 
 export default function AddWidgetTab({ onClose, handleOnChange, detail }) {
     const [value, setValue] = React.useState('1');
+    debugger;
     // Initialize state to have all widgets checked by default
-    const initialCheckedState = Object.keys(detail.CSPM).reduce((acc, widgetName) => {
-        acc[widgetName] = true; // Set default checked state to true
-        return acc;
-    }, {});
 
-    const [checkedWidgets, setCheckedWidgets] = useState(initialCheckedState);
+    const [checkedWidgets, setCheckedWidgets] = useState(true);
    
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -37,16 +34,16 @@ export default function AddWidgetTab({ onClose, handleOnChange, detail }) {
     // }
     // Function to render widgets
     // Handle checkbox change
-    const handleCheckboxChange = (widgetName) => {
-        setCheckedWidgets(prevState => ({
-            ...prevState,
-            [widgetName]: !prevState[widgetName]
-        }));
-        
+    const handleCheckboxChange = (event, widgetName) => {
+        debugger;
+        // setCheckedWidgets(prevState => ({
+        //     ...prevState,
+        //     [widgetName]: !prevState[widgetName]
+        // }));
+        handleOnChange(event,widgetName)
     };
 
-    console.log('datils are : ' + detail);
-    console.log(initialCheckedState)
+    console.log('datils are : ' + detail.CSPM);
     return (
         <ThemeProvider theme={theme}>
             <Box sx={{ width: '100%', typography: 'body1', backgroundColor: theme.palette.background.default }}>
@@ -72,13 +69,13 @@ export default function AddWidgetTab({ onClose, handleOnChange, detail }) {
 
                               </span> */}
                                     {/* new way */}
-                                    {Object.entries(detail.CSPM).map(([widgetName, widgetData]) => (
+                                    {Object.entries(detail).map(([widgetName, widgetData]) => (
                                         <div key={widgetName}>
                                             <label>
                                                 <input
                                                     type="checkbox"
-                                                    checked={!!checkedWidgets[widgetName]}
-                                                    onChange={() => handleCheckboxChange(widgetName)}
+                                                    checked={widgetData[0].isChecked}
+                                                    onChange={(event) => handleCheckboxChange(event,widgetName)}
                                                 />
                                                 {widgetName}
                                             </label>

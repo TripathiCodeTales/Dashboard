@@ -8,6 +8,7 @@ import theme from "./Theme.js";
 import NoContent from "./NoContent.js";
 
 const CardComponent = ({data,Header,noContent}) => {
+    debugger;
     // console.log(data);
    let finalData= data?.filter((dat)=> dat.isChecked == 'true')
     // console.log(finalData)
